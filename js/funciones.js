@@ -57,14 +57,20 @@ function mostrarImagen(event) {
 	  document.getElementById("resultado_ant").value = antiguedadAnios + " años y " + antiguedadMeses + " meses";
 	  calcularPrestaciones(antiguedadAnios, antiguedadMeses);
 	}
-
-  
+	function limpiarDatos() {
+		document.getElementById("salario").value = "";
+	}
    function calcularPrestaciones(anios, meses){
-	calcularPrestaciones(antiguedadAnios, antiguedadMeses);
 	let salario;
 	salario=parseInt(document.getElementById('salario').value);
-	var total = anios * 12 + meses;
-    document.getElementById("resultado_pres").value = total ;
+	var totalantig = anios * 12 + meses;
+	if(salario>0){
+		prestaciones= (totalantig*salario)/12;
+		document.getElementById("resultado_pres").value = prestaciones ;
+	}
+	else(
+		alert("El salario es invalido")
+	)
 
    }
  

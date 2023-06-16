@@ -1,0 +1,37 @@
+
+body{
+  background-color: rgb(248, 247, 245);
+}
+#titulo{
+    background: rgb(24, 187, 202);
+}
+#opc{
+    background-color:  rgb(24, 187, 202);
+}
+
+table {
+  border-collapse: collapse; 
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #258f45;
+}
+
+tr:nth-child(even) {
+  background-color: #abc0d6;
+}
+
+img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+
+
+

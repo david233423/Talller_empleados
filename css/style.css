@@ -5,6 +5,41 @@ body{
     background-position: center;
 
 }
+button{
+    border-radius: 12px;
+background-color: #24cdee;
+}
+
+#mayor{
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+  }
+  #titulo{
+    background-color: aqua;
+    text-align: center;
+  }
+  
+  #foto{
+      width: 240px; 
+      height: 260px; 
+      margin-left: 50px;
+    }
+  #salario{
+    text-align: center;
+  }
+  #datos{
+    border: 2px solid rgb(182, 178, 178);
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    
+  }
+  input{
+    border-radius: 10px;
+  }
+
 
 #table{
     border-radius: 12px;
