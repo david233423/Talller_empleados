@@ -1,0 +1,62 @@
+
+body{
+    margin-inline: 5%;
+    background-color: white;
+    background-position: center;
+
+}
+
+
+#table1{
+    background-color:#24cdee;
+    border-radius: 12px;
+    border: 2px solid  black; 
+    text-align: center;       
+
+}
+
+#table2{
+    background-color:#d1d8d9;
+    border-radius: 12px;     
+
+}
+#table3{
+    margin: auto;
+    background-color:#d1dcde;
+    border-radius: 12px;   
+    border: 2px solid  black;  
+
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+margin-left: 80%;
+  }
+  #foto{
+    margin-left: 80%;
+  }
+label{
+    font-weight: bold;
+    color: #111111cb;
+    
+}
+
+#sisben{
+    border-radius: 8px;
+    }
+    #tipo{
+        border-radius: 8px;
+       
+    }
+
+    #nombre{
+        border-radius: 8px;
+    }
+    #apellido{
+        border-radius: 8px;
+    }
+    
+    #fecha_nac{
+        border-radius: 8px;
+    }
