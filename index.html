@@ -25,17 +25,17 @@
     
   </head>
   
-  <div id="mayor">
+  <div class="contenido">
       
     <div id="titulo">
-      Sistemas de Empleados
+      Sistema de Empleados
     </div>
    <br>
   <div class="row" id="datos">
     <div class="col-md-8" >
       
 
-<label for="Datos"> Datos personales</label><br>
+<label id="titulodatos" for="Datos"> Datos personales</label><br><br>
        
 <label for="nombre">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label><input type="text" id ="nombre"  
 placeholder="Escriba su nombre" > &nbsp;  &nbsp;<br><br>
@@ -43,7 +43,7 @@ placeholder="Escriba su nombre" > &nbsp;  &nbsp;<br><br>
 <label for="apellido">Apellido: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" id ="apellido"
 placeholder="Escriba su apellido" > &nbsp;  &nbsp; <br><br>
 
-<label for="">Sexo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> &nbsp;  &nbsp; 
+<label for="">Sexo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> &nbsp;  &nbsp; 
 <label for="F">F:&nbsp; </label><input type="radio" id ="F" name="genero"> 
 
 <label for="M">M:&nbsp;</label> <input type="radio" id ="M" name="genero"><br><br>
@@ -59,10 +59,10 @@ placeholder="Escriba su apellido" > &nbsp;  &nbsp; <br><br>
 
 </div>
 <div class="col-md-3">
-<label for="archivo" class="custom-file-input">Seleccionar archivo</label>
+<label for="archivo" class="custom-file-input">Seleccionar archivo</label><br>
 <input id="archivo" type="file" accept="image/*" onchange="mostrarImagen(event)" style="display:none;">
 <br>
-<img id="imagen" alt="Imagen">
+<img id="imagen" src="img/fondo.png" alt="">
 
 </div>
 
@@ -74,44 +74,78 @@ placeholder="Escriba su apellido" > &nbsp;  &nbsp; <br><br>
 
   <br>
   <div id="datos">
-    
-
-      <label for="">Salario</label><br><br>
-      <label for="num2">Salario:&nbsp;&nbsp;</label><input type="number" id ="salario"
+    <div class="titulosalario">
+     <label id="titulosalario" for="">Salario</label>
+    </div >
+    <div class="salarios">
+      <label for="numero">Salario:&nbsp;&nbsp;</label><input type="number" id ="salario"
       placeholder="Escriba el salario" >&nbsp;&nbsp;&nbsp;&nbsp; 
 
-      <button onclick="limpiarDatos()">Modificar</button>
+      <button class="float" id="miBoton1"  onclick="limpiarDatos()" >Modificar</button>
+    </div>
+      
   </div>
   <br>
   <div id="datos">
-    Calculos
-    <br> <br>
-    <div id="salario">
-      <label for="">Calculos</label><br><br>
+    <div id="calculos">
+      <div class="calculos">
+        <label class="calculos" for="">Calculos</label><br><br>
+      </div>
 
-      <button onclick="calcularEdad()">Calcular Edad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+      <button class="float" id="miBoton2" onclick="calcularEdad()">ㅤㅤCalcular Edad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
       <label for="resultado"></label>
       <input type="text" id="resultado" readonly><br><br>
 
-      <button onclick="calcularAntiguedad()">Calcular antiguedad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+      <button class="float" id="miBoton3" onclick="calcularAntiguedad()">Calcular Antigüedad &nbsp;&nbsp;</button>
       <label for="resultado_ant"></label>
       <input type="text" id="resultado_ant" readonly><br><br>
       
-      <button type="button" class="btn-primary" onclick="calcularPrestaciones()">Calcular prestaciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+      <button class="float" id="miBoton4" type="button"  onclick="calcularPrestaciones()">Calcular prestaciones</button>
       <label for="resultado_pres"></label>
       <input type="text" id="resultado_pres" readonly><br><br> 
     </div>
   </div>
   <br>
   <div id="datos">
-    Puntos de Extensión
-    <br> <br>
-    <div id="salario">
-      <button type="button" class="btn btn-primary">Opción 1</button>
-      <button type="button" class="btn btn-primary">Opción 2</button>
+    <div>
+      <label id="titulosalario" for="">Puntos de Extensión</label><br><br>
+      
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="cerrarFormulario()">&times;</span>
+          
+          <div class="form-container">
+            <label for="nivel">Nivel de formación académico:</label>
+            <input type="text" id="nivel">
+          </div>
+
+          <div class="form-container">
+            <label for="profesion">Profesión</label>
+            <input type="text" id="profesion">
+          </div>
+          
+          <div class="form-container">
+            <label for="años">Años de experiencia</label>
+            <input type="number" id="experiencia">
+          </div>
+          
+          
+          
+          <button class="float" onclick="guardarInformacion()">Guardar</button>
+        </div>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <button class="float" onclick="abrirFormulario()">Abrir Formulario</button><br>
+        
+        <button class="float" onclick="visualizarInformacion()">Visualizar Información</button>
+      </div>
+    
     </div>
   </div>
   </div>
+
+
 
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>

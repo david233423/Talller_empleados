@@ -73,4 +73,109 @@ function mostrarImagen(event) {
 	)
 
    }
- 
+   
+   document.addEventListener('DOMContentLoaded', function() {
+	var boton = document.getElementById('miBoton1');
+	var audio = new Audio('mp3/audio.mp3');
+  
+	boton.addEventListener('click', function() {
+	  audio.play();
+	});
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+	var boton = document.getElementById('miBoton2');
+	var audio = new Audio('mp3/audio.mp3');
+  
+	boton.addEventListener('click', function() {
+	  audio.play();
+	});
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+	var boton = document.getElementById('miBoton3');
+	var audio = new Audio('mp3/audio.mp3');
+  
+	boton.addEventListener('click', function() {
+	  audio.play();
+	});
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+	var boton = document.getElementById('miBoton4');
+	var audio = new Audio('mp3/audio.mp3');
+  
+	boton.addEventListener('click', function() {
+	  audio.play();
+	});
+  });
+
+
+
+
+
+  const informacionComplementaria = [];
+    
+  // Función para abrir el formulario
+  function abrirFormulario() {
+	const modal = document.getElementById("myModal");
+	modal.style.display = "block";
+  }
+  
+  // Función para cerrar el formulario
+  function cerrarFormulario() {
+	const modal = document.getElementById("myModal");
+	modal.style.display = "none";
+	
+	// Limpiar los campos del formulario al cerrarlo
+	
+	document.getElementById("profesion").value = "";
+	document.getElementById("experiencia").value = "";
+	document.getElementById("nivel").value = "";
+  }
+
+  function guardarInformacion() {
+
+	const profesion = document.getElementById("profesion").value;
+	const experiencia = document.getElementById("experiencia").value;
+	const nivel = document.getElementById("nivel").value;
+	
+	const informacion = {
+	  
+	  profesion: profesion,
+	  experiencia: experiencia,
+	  nivel: nivel
+	};
+	
+	informacionComplementaria.push(informacion);
+	
+	// Cerrar el formulario después de guardar la información
+	cerrarFormulario();
+  }
+  
+  function visualizarInformacion() {
+	var nombre= (document.getElementById("nombre").value);
+	var apellido= (document.getElementById("apellido").value);
+	let mensaje = "Información complementaria:\n\n";
+	
+	if (informacionComplementaria.length === 0) {
+	  mensaje += "No hay información almacenada.";
+	} else {
+	  informacionComplementaria.forEach((info, index) => {
+
+		mensaje += `Pofesión: ${info.profesion}\n`;
+		mensaje += `Experiencia: ${info.experiencia}\n`;
+		mensaje += `Nivel de formación académico: ${info.nivel}\n\n`;
+	  });
+	}
+	alert(nombre+" "+apellido+"\n\n"+mensaje);
+	
+  }
+
+  
+
+  
+
+
+
+  
+
+

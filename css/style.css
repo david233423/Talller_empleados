@@ -1,100 +1,118 @@
 
 body{
-    margin-inline: 5%;
+  
     background-color: white;
     background-position: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
 
 }
-button{
-    border-radius: 12px;
-background-color: #24cdee;
+
+.contenido {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 16px;
 }
 
-#mayor{
-    margin-left: 300px;
-    margin-right: 300px;
-    margin-top: 20px;
-  }
+#titulosalario {
+  font-size: 150%;
+  font-weight: 900;
+  color: #062b7c;
+  text-align: left;
+}
+#titulodatos{
+  
+  font-size: 120%;
+  font-weight: 900;
+  color: #062b7c;
+  text-align: left;
+}
+.calculos {
+  font-size: 130%;
+  color: #062b7c;
+  text-align: center;
+}
+.salarios{
+  font-size: 15px;
+  font-weight: bold;
+  color: #062b7c;
+  text-align: center;
+}
+
+.float {
+  background-color: #062b7c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+
+.float{
+  transition: .5s, color .10s;
+  -webkit-transition: .5s, color .10s;
+  -moz-transition: .5s, color .10s;
+  text-align: center;
+ 
+}
+.float:hover{
+  box-shadow: 0 8px 8px 0 #000000,0 8px 8px 0 #000000;
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  -moz-transform:translate(0px,5px);
+}
+
+.boton-calcular:hover {
+  background-color: #45a049;
+}
+
   #titulo{
-    background-color: aqua;
+    background-color:#062b7c;
     text-align: center;
+    color: white;
+    border-radius: 10px;
+    font-size: 140%;
+    font-weight: 900;
   }
   
-  #foto{
-      width: 240px; 
-      height: 260px; 
-      margin-left: 50px;
-    }
-  #salario{
+  
+  #calculos{
     text-align: center;
   }
   #datos{
-    border: 2px solid rgb(182, 178, 178);
+    border: 2px solid #081e4e;
     border-radius: 10px;
     padding: 20px;
-    margin-left: 3px;
-    margin-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
     
   }
-  input{
-    border-radius: 10px;
-  }
 
-
-#table{
-    border-radius: 12px;
-    background-color: white;
+input{
+  border-radius:8px;
 }
-#table1{
-    background-color:#24cdee;
-    border-radius: 12px; 
-    text-align: center;       
-
-}
-
-#table2{
-    margin: auto;
-    background-color:#ebf1f2;
-    border-radius: 12px;     
-
-}
-#table3{
-    margin: auto;
-    background-color:#ebf1f2;
-    border-radius: 12px;    
-
-}
-
 img {
     max-width: 200px;
-    max-height: 200px;
+    max-height: 185px;
+    border: 2px solid #081e4e;
   }
   
 label{
-    font-weight: bold;
-    color: #111111cb;
+    font-weight: 500;
+    color: #081e4e;
     margin-left: 5%;
     
 }
-
-#sisben{
-    border-radius: 8px;
-    }
-    #tipo{
-        border-radius: 8px;
-       
-    }
-
-    #nombre{
-        border-radius: 8px;
-    }
-    #apellido{
-        border-radius: 8px;
-    }
-    
-    #fecha_nac{
-        border-radius: 8px;
-    }
     .custom-file-input {
         display: inline-block;
         padding: 4px 8px;
@@ -106,3 +124,54 @@ label{
         color: #333;
         cursor: pointer;
       }
+
+
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      
+      .modal-content {
+        background-color: #ffffff;
+        margin: 15% auto;
+        padding: 100px;
+        border: 3px solid #131e72;
+        width: 120%;
+        max-width: 400px;
+      }
+      
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      .form-container {
+        margin-bottom: 10px;
+      }
+      
+      .form-container label,
+      .form-container input {
+        display: block;
+        margin-bottom: 10px;
+        text-align: center;
+        align-items: center;
+      }
+      
