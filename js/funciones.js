@@ -154,7 +154,7 @@ function mostrarImagen(event) {
   function visualizarInformacion() {
 	var nombre= (document.getElementById("nombre").value);
 	var apellido= (document.getElementById("apellido").value);
-	let mensaje = "Información complementaria:\n\n";
+	let mensaje = "Información complementaria:\n";
 	
 	if (informacionComplementaria.length === 0) {
 	  mensaje += "No hay información almacenada.";
@@ -166,7 +166,7 @@ function mostrarImagen(event) {
 		mensaje += `Nivel de formación académico: ${info.nivel}\n\n`;
 	  });
 	}
-	alert(nombre+" "+apellido+"\n\n"+mensaje);
+	confirm(nombre+" "+apellido+"\n\n"+mensaje);
 	
   }
 
