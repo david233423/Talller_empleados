@@ -174,4 +174,16 @@ label{
         text-align: center;
         align-items: center;
       }
+
+
+#calcular{
+  margin-left: 300px;
+}
+
+#total{
+  margin-left: 250px;
+}
+#inicio{
+  margin-left: 640px;
+}
       
