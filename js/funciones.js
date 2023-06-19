@@ -17,50 +17,66 @@ function mostrarImagen(event) {
 
 	var edadAnios = anioActual - anioNacimiento;
 	var edadMeses = mesActual - mesNacimiento;
-	
-	if (diaActual < diaNacimiento) {
-		edadMeses--;
-	  }
-	  
-	  if (edadMeses < 0) {
-		edadAnios--;
-		edadMeses = 12 - Math.abs(edadMeses);
-	  }
-	  
-	  document.getElementById("resultado").value = edadAnios + " años y " + edadMeses + " meses";
-	}
 
-  function calcularAntiguedad() {
-	var fechaIngreso = document.getElementById("fechaIngreso").value;
-	var fechaActual = new Date();
+
+		if (anioNacimiento < anioActual && mesNacimiento<mesActual && diaNacimiento<diaActual){
+			if (diaActual < diaNacimiento) {
+				edadMeses--;
+			}
+			
+			if (edadMeses < 0) {
+				edadAnios--;
+				edadMeses = 12 - Math.abs(edadMeses);
+			}
+			
+			document.getElementById("resultado").value = edadAnios + " años y " + edadMeses + " meses";
+		}else(
+			alert("Fecha de nacimineto invalida")
+		)
+	}
+			
+
 	
-	var anioIngreso = parseInt(fechaIngreso.substring(0, 4));
-	var mesIngreso = parseInt(fechaIngreso.substring(5, 7));
-	var diaIngreso = parseInt(fechaIngreso.substring(8, 10));
+
+
 	
-	var anioActual = fechaActual.getFullYear();
-	var mesActual = fechaActual.getMonth() + 1;
-	var diaActual = fechaActual.getDate();
-	
-	var antiguedadAnios = anioActual - anioIngreso;
-	var antiguedadMeses = mesActual - mesIngreso;
-	
-	if (diaActual < diaIngreso) {
-		antiguedadMeses--;
-	  }
-	  
-	  if (antiguedadMeses < 0) {
-		antiguedadAnios--;
-		antiguedadMeses = 12 - Math.abs(antiguedadMeses);
-	  }
-	  
-	  document.getElementById("resultado_ant").value = antiguedadAnios + " años y " + antiguedadMeses + " meses";
-	  calcularPrestaciones(antiguedadAnios, antiguedadMeses);
+
+function calcularAntiguedad() {
+      var fechaIngreso = new Date(document.getElementById("fechaIngreso").value);
+      var fechaActual = new Date();
+      
+      var aniosAntiguedad = fechaActual.getFullYear() - fechaIngreso.getFullYear();
+      var mesesAntiguedad = fechaActual.getMonth() - fechaIngreso.getMonth();
+      
+	  var anioActualAnt = fechaActual.getFullYear();
+	  var mesActualAnt = fechaActual.getMonth();
+
+      if(fechaIngreso<anioActualAnt && fechaIngreso<mesActualAnt){
+		if (mesesAntiguedad < 0) {
+			aniosAntiguedad--;
+			mesesAntiguedad = 12 + mesesAntiguedad;
+		}
+		
+
+		var resultadoAntiguedad = aniosAntiguedad + " años y " + mesesAntiguedad + " meses";
+		document.getElementById("resultado_ant").value = resultadoAntiguedad;
+		return { anios: aniosAntiguedad, meses: mesesAntiguedad };
+	  }else(
+		alert("Fecha de ingreso invalida")
+	  )
+			
+
 	}
 	function limpiarDatos() {
 		document.getElementById("salario").value = "";
 	}
+	
    function calcularPrestaciones(anios, meses){
+
+    var antiguedad = calcularAntiguedad();
+      var anios = antiguedad.anios;
+      var meses = antiguedad.meses;
+
 	let salario;
 	salario=parseInt(document.getElementById('salario').value);
 	var totalantig = anios * 12 + meses;
@@ -166,7 +182,7 @@ function mostrarImagen(event) {
 		mensaje += `Nivel de formación académico: ${info.nivel}\n\n`;
 	  });
 	}
-	confirm(nombre+" "+apellido+"\n\n"+mensaje);
+	alert(nombre+" "+apellido+"\n\n"+mensaje);
 	
   }
 
