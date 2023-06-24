@@ -3,92 +3,139 @@ function mostrarImagen(event) {
 	imagen.src = URL.createObjectURL(event.target.files[0]);
   }
 
-  function calcularEdad()   {
-	var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+  function Persona(fechaNacimiento) {
+	this.fechaNacimiento = new Date(fechaNacimiento);
+  }
+  
+  Persona.prototype.validarFechaNacimiento = function() {
 	var fechaActual = new Date();
+	var fechaIngresada = this.fechaNacimiento;
 	
-	var anioNacimiento = parseInt(fechaNacimiento.substring(0, 4));
-	var mesNacimiento = parseInt(fechaNacimiento.substring(5, 7));
-	var diaNacimiento = parseInt(fechaNacimiento.substring(8, 10));
-	
-	var anioActual = fechaActual.getFullYear();
-	var mesActual = fechaActual.getMonth() + 1;
-	var diaActual = fechaActual.getDate();
-
-	var edadAnios = anioActual - anioNacimiento;
-	var edadMeses = mesActual - mesNacimiento;
-
-
-		if (anioNacimiento < anioActual && mesNacimiento<mesActual && diaNacimiento<diaActual){
-			if (diaActual < diaNacimiento) {
-				edadMeses--;
-			}
-			
-			if (edadMeses < 0) {
-				edadAnios--;
-				edadMeses = 12 - Math.abs(edadMeses);
-			}
-			
-			document.getElementById("resultado").value = edadAnios + " años y " + edadMeses + " meses";
-		}else(
-			alert("Fecha de nacimineto invalida")
-		)
+	// Verificar si la fecha de nacimiento es posterior a la fecha actual
+	if (fechaIngresada >= fechaActual) {
+	  return false;
 	}
-			
-
 	
-
-
+	return true;
+  };
+  
+  Persona.prototype.calcularEdad = function() {
+	var fechaActual = new Date();
+	var anios = fechaActual.getFullYear() - this.fechaNacimiento.getFullYear();
+	var meses = fechaActual.getMonth() - this.fechaNacimiento.getMonth();
+	var dias = fechaActual.getDate() - this.fechaNacimiento.getDate();
+  
+	// Restar un año si todavía no ha pasado el cumpleaños
+	if (meses < 0 || (meses === 0 && dias < 0)) {
+	  anios--;
+	  meses = 12 + meses; // Ajustar los meses para que sean positivos
+	}
+  
+	return { anios: anios, meses: meses };
+  };
+  
+  function calcularEdad() {
+	var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+	var persona = new Persona(fechaNacimiento);
 	
-
-function calcularAntiguedad() {
-      var fechaIngreso = new Date(document.getElementById("fechaIngreso").value);
-      var fechaActual = new Date();
-      
-      var aniosAntiguedad = fechaActual.getFullYear() - fechaIngreso.getFullYear();
-      var mesesAntiguedad = fechaActual.getMonth() - fechaIngreso.getMonth();
-      
-	  var anioActualAnt = fechaActual.getFullYear();
-	  var mesActualAnt = fechaActual.getMonth();
-
-      if(fechaIngreso<anioActualAnt && fechaIngreso<mesActualAnt){
-		if (mesesAntiguedad < 0) {
-			aniosAntiguedad--;
-			mesesAntiguedad = 12 + mesesAntiguedad;
+	// Validar la fecha de nacimiento antes de calcular la edad
+	if (!persona.validarFechaNacimiento()) {
+	  alert("La fecha de nacimiento ingresada no es válida.");
+	  return;
+	}
+	
+	var edad = persona.calcularEdad();
+	if(edad.anios!=0 && edad.meses!=0){
+		var resultado = edad.anios + " años y " + edad.meses + " meses";
+	document.getElementById("resultado").value = resultado;
+	}else(
+		alert("La fecha de nacimiento ingresada no es válida.")
+	)
+	
+  }
+  
+  
+	
+	function Empleado(fechaIngreso) {
+		this.fechaIngreso = new Date(fechaIngreso);
+	  }
+	  
+	  Empleado.prototype.calcularAntiguedad = function() {
+		var fechaActual = new Date();
+		
+		var aniosAntiguedad = fechaActual.getFullYear() - this.fechaIngreso.getFullYear();
+		var mesesAntiguedad = fechaActual.getMonth() - this.fechaIngreso.getMonth();
+		var diasAntiguedad = fechaActual.getDate() - this.fechaIngreso.getDate();
+		
+		if (mesesAntiguedad < 0 || (mesesAntiguedad === 0 && diasAntiguedad < 0)) {
+		  aniosAntiguedad--;
+		  mesesAntiguedad = 12 + mesesAntiguedad;
 		}
 		
-
-		var resultadoAntiguedad = aniosAntiguedad + " años y " + mesesAntiguedad + " meses";
-		document.getElementById("resultado_ant").value = resultadoAntiguedad;
 		return { anios: aniosAntiguedad, meses: mesesAntiguedad };
-	  }else(
-		alert("Fecha de ingreso invalida")
-	  )
+	  }
+	  
+	  function calcularAntiguedad() {
+		var fechaIngreso = new Date(document.getElementById("fechaIngreso").value);
+		var empleado = new Empleado(fechaIngreso);
+		var antiguedad = empleado.calcularAntiguedad();
+		
+		var resultado = "";
+		var fechaActual = new Date();
+		
+		if (fechaIngreso < fechaActual) {
+		  if (antiguedad.anios > 0) {
+			resultado += antiguedad.anios + " año";
+			if (antiguedad.anios > 1) {
+			  resultado += "s";
+			}
 			
+			if (antiguedad.meses > 0) {
+			  resultado += " y ";
+			}
+		  }
+		  
+		  if (antiguedad.meses > 0) {
+			resultado += antiguedad.meses + " mes";
+			if (antiguedad.meses > 1) {
+			  resultado += "es";
+			}
+		  }
+		  
+		  document.getElementById("resultado_ant").value = resultado;
+		} else (
+		  alert("La fecha de ingreso es incorrecta")
+		)
+	  }
+	  
+	  
+	  
+	  
+	  function calcularPrestaciones() {
+		var fechaIngreso = document.getElementById("fechaIngreso").value;
+		var empleado = new Empleado(fechaIngreso);
+		var antiguedad = empleado.calcularAntiguedad();
+	  
+		var anios = antiguedad.anios;
+		var meses = antiguedad.meses;
+	  
+		var salario = parseInt(document.getElementById("salario").value);
+		if (!isNaN(salario) && salario > 0) {
+		  var totalantig = anios * 12 + meses;
+		  var prestaciones = (totalantig * salario) / 12;
+		  document.getElementById("resultado_pres").value = prestaciones;
+		} else {
+		  alert("El salario es inválido");
+		}
+	  }
+	  
 
-	}
+
 	function limpiarDatos() {
 		document.getElementById("salario").value = "";
 	}
 	
-   function calcularPrestaciones(anios, meses){
-
-    var antiguedad = calcularAntiguedad();
-      var anios = antiguedad.anios;
-      var meses = antiguedad.meses;
-
-	let salario;
-	salario=parseInt(document.getElementById('salario').value);
-	var totalantig = anios * 12 + meses;
-	if(salario>0){
-		prestaciones= (totalantig*salario)/12;
-		document.getElementById("resultado_pres").value = prestaciones ;
-	}
-	else(
-		alert("El salario es invalido")
-	)
-
-   }
+   
    
    document.addEventListener('DOMContentLoaded', function() {
 	var boton = document.getElementById('miBoton1');
